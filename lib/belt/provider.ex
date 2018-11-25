@@ -51,7 +51,7 @@ defmodule Belt.Provider do
   supported by certain providers and are documented there.
   """
   @type store_option ::
-    {:hashes, [:crypto.hash_algorithms]} |
+    {:hashes, [Belt.Hasher.hash_algorithm]} |
     {:key, String.t | :auto} |
     {:overwrite, boolean | :rename} |
     {:scope, String.t} |
@@ -65,7 +65,7 @@ defmodule Belt.Provider do
   there.
   """
   @type info_option ::
-    {:hashes, [:crypto.hash_algorithms]} |
+    {:hashes, [Belt.Hasher.hash_algorithm]} |
     Belt.request_option |
     {atom | term}
 

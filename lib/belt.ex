@@ -58,7 +58,7 @@ defmodule Belt do
   The following options are supported by all providers. Some providers might
   offer additional options.
 
-  - `:hashes` - `[:crypto.hash_algorithms]` - Hashes to include in the returned
+  - `:hashes` - `[Belt.Hasher.hash_algorithm]` - Hashes to include in the returned
     `Belt.FileInfo` struct.
   - `:key` - `String.t | :auto` - The key to be used for storing the file. For most
     providers, this corresponds to the file name. When set to `:auto`, Belt tries to
@@ -126,7 +126,7 @@ defmodule Belt do
 
   - `:key` - `String.t` - The key to be used for storing the file. For most
     providers, this corresponds to the file name. Required.
-  - `:hashes` - `[:crypto.hash_algorithms]` - Hashes to include in the returned
+  - `:hashes` - `[Belt.Hasher.hash_algorithm]` - Hashes to include in the returned
     `Belt.FileInfo` struct.
   - `:overwrite` - `true | false | :rename` - How to handle conflicting keys.
     Defaults to `:rename`.

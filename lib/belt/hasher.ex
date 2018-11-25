@@ -43,6 +43,13 @@ defmodule Belt.Hasher do
     {:encoding, :raw | :base16 | :base32 | :base64} |
     {:case, :lower | :upper}
 
+  @typedoc """
+  Algorithms supported by `:crypto.hash/2`
+  """
+  @type hash_algorithm ::
+    :md4 | :md5 | :ripemd160 | :sha | :sha224 | :sha256 | :sha384 |
+    :sha512
+
   @doc """
   Hashes iodata with the given hashing algorithm(s).
 
@@ -61,8 +68,8 @@ defmodule Belt.Hasher do
   #=> "2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae"
   ```
   """
-  @spec hash(iodata, [:crypto.hash_algorithms], [option]) :: [binary]
-  @spec hash(iodata, :crypto.hash_algorithms, [option]) :: binary
+  @spec hash(iodata, [hash_algorithm], [option]) :: [binary]
+  @spec hash(iodata, hash_algorithm, [option]) :: binary
 
   def hash(iodata, algs, options \\ [])
 
@@ -83,8 +90,8 @@ defmodule Belt.Hasher do
 
     For supported options, see `Belt.Hasher.hash/3`
   """
-  @spec hash_stream(Stream.t, [:crypto.hash_algorithms], [option]) :: [binary]
-  @spec hash_stream(Stream.t, :crypto.hash_algorithms, [option]) :: binary
+  @spec hash_stream(Stream.t, [hash_algorithm], [option]) :: [binary]
+  @spec hash_stream(Stream.t, hash_algorithm, [option]) :: binary
   def hash_stream(stream, algs, options \\ [])
   def hash_stream(stream, alg, options) when not is_list(alg),
     do: hash_stream(stream, [alg], options) |> Enum.at(0)
@@ -106,8 +113,8 @@ defmodule Belt.Hasher do
 
     For supported options, see `Belt.Hasher.hash/3`
   """
-  @spec hash_file(Path.t, :crypto.hash_algorithms, [option]) :: binary
-  @spec hash_file(Path.t, [:crypto.hash_algorithms], [option]) ::[binary]
+  @spec hash_file(Path.t, hash_algorithm, [option]) :: binary
+  @spec hash_file(Path.t, [hash_algorithm], [option]) ::[binary]
   def hash_file(path, algs, options \\ [])
   def hash_file(path, alg, options) when not is_list(alg),
     do: hash_file(path, [alg], options) |> Enum.at(0)
