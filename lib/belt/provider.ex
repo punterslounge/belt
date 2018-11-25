@@ -47,7 +47,7 @@ defmodule Belt.Provider do
 
   @typedoc """
   Options supported by all providers for `Belt.store/3`, `Belt.store_async/3`,
-  `Belt.store_data/3` and `Belt.store_data_async/3. Additional options might be
+  `Belt.store_data/3` and `Belt.store_data_async/3`. Additional options might be
   supported by certain providers and are documented there.
   """
   @type store_option ::

@@ -74,7 +74,7 @@ defmodule Belt.Provider.Filesystem do
   end
 
   @doc """
-  Implementation of the `Belt.Provider.store_data/3 callback.
+  Implementation of the `Belt.Provider.store_data/3` callback.
   """
   def store_data(config, iodata, options) do
     with {:ok, path} <- prepare_store(config, options),
