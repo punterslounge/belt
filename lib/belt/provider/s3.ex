@@ -77,7 +77,7 @@ if Code.ensure_loaded? ExAws.S3 do
       |> Map.to_list()
       |> Enum.map(fn {key, default} ->
         case key do
-        :"__struct__" -> {key, default}
+        :__struct__ -> {key, default}
         _ -> {key, Keyword.get(opts, key, default)}
         end
       end)
@@ -140,7 +140,7 @@ if Code.ensure_loaded? ExAws.S3 do
 
     defp options_from_exaws(aws_config) do
       %Belt.Provider.S3.Config{}
-      |> Map.delete(:"__struct__")
+      |> Map.delete(:__struct__)
       |> Map.to_list()
       |> Enum.map(fn {key, default} ->
         case key do
