@@ -15,7 +15,7 @@ defmodule Belt.Test.Provider.SFTP do
 
     #Create host key
     key_path = Path.join(config_dir, "ssh_host_rsa_key")
-    System.cmd("ssh-keygen", ["-m", "pem", "-t", "rsa", "-N", "", "-f", key_path])
+    System.cmd("ssh-keygen", ["-m", "PEM", "-t", "rsa", "-N", "", "-f", key_path])
     host_key = load_public_key(key_path <> ".pub")
 
     #Create user key
