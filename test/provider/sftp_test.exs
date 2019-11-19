@@ -20,7 +20,7 @@ defmodule Belt.Test.Provider.SFTP do
 
     #Create user key
     user_key_path = Path.join(config_dir, "ssh_user_key")
-    System.cmd("ssh-keygen", ["-t", "rsa", "-N", "", "-f", user_key_path])
+    {_, 0} = System.cmd("ssh-keygen", ["-t", "rsa", "-N", "", "-f", user_key_path])
     File.cp(user_key_path <> ".pub", Path.join(config_dir, "authorized_keys"))
     user_key = load_key(user_key_path)
     #:timer.sleep 5000
