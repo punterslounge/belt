@@ -64,7 +64,7 @@ if Code.ensure_loaded? :ssh_sftp do
         |> Map.to_list()
         |> Enum.map(fn {key, default} ->
           case key do
-            :"__struct__" -> {key, default}
+            :__struct__ -> {key, default}
             _ -> {key, Keyword.get(opts, key, default)}
           end
         end)
