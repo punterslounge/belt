@@ -15,7 +15,7 @@ defmodule Belt.Test.Provider.SFTP do
 
     #Create host key
     key_path = Path.join(config_dir, "ssh_host_rsa_key")
-    System.cmd("ssh-keygen", ["-t", "rsa", "-N", "", "-f", key_path])
+    System.cmd("ssh-keygen", ["m", "PEM", "-t", "rsa", "-N", "", "-f", key_path])
     host_key = load_public_key(key_path <> ".pub")
 
     #Create user key
@@ -60,9 +60,7 @@ defmodule Belt.Test.Provider.SFTP do
   @pem_regex ~r/[-]+BEGIN RSA PRIVATE KEY.*END RSA PRIVATE KEY[-]+\n/s
   defp load_key(path) do
     file_contents = File.read!(path)
-    IO.inspect(file_contents)
     Regex.run(@pem_regex, file_contents)
-    |> IO.inspect()
     |> List.first()
     |> :public_key.pem_decode()
     |> List.first()
