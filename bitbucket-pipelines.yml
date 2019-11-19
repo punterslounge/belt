@@ -9,6 +9,24 @@ pipelines:
           - mix deps.get
           - mix test
       - step:
+          image: elixir:1.8-alpine
+          name: Elixir 1.8
+          script:
+          - apk add --no-cache openssl openssh-client
+          - mix local.hex --force
+          - mix local.rebar --force
+          - mix deps.get
+          - mix test
+      - step:
+          image: elixir:1.7-alpine
+          name: Elixir 1.7
+          script:
+          - apk add --no-cache openssl openssh-client
+          - mix local.hex --force
+          - mix local.rebar --force
+          - mix deps.get
+          - mix test
+      - step:
           image: elixir:1.6-alpine
           name: Elixir 1.6
           script:
