@@ -43,7 +43,7 @@ defmodule Belt.Mixfile do
      {:ex_doc, "~> 0.19", only: :dev, runtime: false},
      {:coverex, "~> 1.4", only: :test},
      {:excoveralls, "~> 0.6", only: :test},
-     {:dialyxir, "~> 0.5", only: [:dev], runtime: false},
+     {:dialyxir, "~> 1.0", only: [:dev], runtime: false},
      {:ex_aws, "~> 2.1.6", optional: true},
      {:ex_aws_s3, "~> 2.0", optional: true},
      {:sweet_xml, "~> 0.6", optional: true},
