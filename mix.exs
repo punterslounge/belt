@@ -25,7 +25,7 @@ defmodule Belt.Mixfile do
       extras: ["guides/getting-started.md"]
      ],
 
-     xref: [exclude: :ssh, exclude: :ssh_sftp]
+     xref: [exclude: [:ssh, :ssh_sftp]]
     ]
   end
 
