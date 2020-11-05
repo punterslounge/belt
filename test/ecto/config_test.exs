@@ -14,10 +14,10 @@ defmodule Belt.Test.Ecto.Config do
   test "cast!" do
     config = get_config!()
     assert Config.cast!(config)
-    assert_raise Ecto.FunctionClauseError, fn ->
+    assert_raise FunctionClauseError, fn ->
       Config.cast!(%{some_key: :foo})
     end
-    assert_raise Ecto.FunctionClauseError, fn ->
+    assert_raise FunctionClauseError, fn ->
       Config.cast!(nil)
     end
   end
