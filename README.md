@@ -50,10 +50,10 @@ end
 If you want to use the S3 backend, you also need to add [ExAws](https://github.com/ex-aws/ex_aws/) with [ExAws S3](https://github.com/ex-aws/ex_aws_s3) as well as [Hackney](https://hex.pm/packages/hackney) and [sweet_xml](https://hex.pm/packages/sweet_xml) (which are required by ExAws) to your dependencies and applications list:
 ```elixir
 def deps do
-  [{:belt, "~> 0.4.0"},
+  [{:belt, "~> 0.5.1"},
    {:ex_aws, "~> 2.1"},
    {:ex_aws_s3, "~> 2.0"},
-   {:hackney, "~> 1.9"},
+   {:hackney, "~> 1.16"},
    {:sweet_xml, "~> 0.6"}]
 end
 
