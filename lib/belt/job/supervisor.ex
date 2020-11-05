@@ -5,15 +5,15 @@ defmodule Belt.Job.Supervisor do
 
   use Supervisor
 
-  def start_link() do
+  def start_link(_init_arg \\ :ok) do
     Supervisor.start_link(__MODULE__, :ok, [name: __MODULE__])
   end
 
+  @impl true
   def init(:ok) do
-    children = [
-      worker(Belt.Job, [], restart: :transient)
-    ]
-    supervise(children, strategy: :simple_one_for_one)
+    children = []
+
+    Supervisor.init(children, strategy: :one_for_one)
   end
 
   @doc """
@@ -28,7 +28,13 @@ defmodule Belt.Job.Supervisor do
       other -> other
     end
 
-    Supervisor.start_child(__MODULE__, [name, payload])
+    Supervisor.start_child(__MODULE__, %{
+      id: name,
+      start: {Belt.Job, :start_link, [name, payload]},
+      type: :worker,
+      restart: :transient,
+      shutdown: 500
+    })
     |> case do
       {:ok, _pid} -> {:ok, name}
       other -> {:error, other}

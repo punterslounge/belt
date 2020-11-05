@@ -60,9 +60,7 @@ defmodule Belt.Test.Provider.SFTP do
   @pem_regex ~r/[-]+BEGIN RSA PRIVATE KEY.*END RSA PRIVATE KEY[-]+\n/s
   defp load_key(path) do
     file_contents = File.read!(path)
-    IO.inspect(file_contents)
     Regex.run(@pem_regex, file_contents)
-    |> IO.inspect()
     |> List.first()
     |> :public_key.pem_decode()
     |> List.first()

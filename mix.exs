@@ -23,7 +23,9 @@ defmodule Belt.Mixfile do
       source_url: "https://bitbucket.org/pentacent/belt",
       homepage_url: "https://bitbucket.org/pentacent/belt",
       extras: ["guides/getting-started.md"]
-     ]
+     ],
+
+     xref: [exclude: :ssh, exclude: :ssh_sftp]
     ]
   end
 
