@@ -38,7 +38,7 @@ list in `mix.exs`:
 
 ```elixir
 def deps do
-  [{:belt, "~> 0.1.0"}]
+  [{:belt, "~> 0.5"}]
 end
 
 def application do
