@@ -13,7 +13,11 @@ defmodule Belt.Provider.Supervisor do
         end
 
         def init(_arg) do
-          ConsumerSupervisor.init([get_worker_name()],
+          children = [%{
+            id: get_worker_name(),
+            start: {get_worker_name(), :start_link, []}, restart: :transient
+          }]
+          ConsumerSupervisor.init(children,
             strategy: :one_for_one,
             subscribe_to: [{Belt,
               max_demand: @concurrency_limit,
