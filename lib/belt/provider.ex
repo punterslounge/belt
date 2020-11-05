@@ -186,6 +186,16 @@ defmodule Belt.Provider do
       @behaviour Belt.Provider
       use Belt.Provider.Supervisor
 
+      def child_spec(opts) do
+        %{
+          id: __MODULE__,
+          start: {__MODULE__, :start_link, [opts]},
+          type: :worker,
+          restart: :transient,
+          shutdown: 500
+        }
+      end
+
       @doc false
       def start_link(event) do
         Task.start_link(fn -> init(event) end)

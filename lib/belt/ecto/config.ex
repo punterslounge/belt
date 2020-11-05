@@ -23,7 +23,7 @@ if Code.ensure_loaded? Ecto.Type do
     ```
     """
 
-    @behaviour Ecto.Type
+    use Ecto.Type
 
     @doc """
     Underlying Ecto primitive is a Map.

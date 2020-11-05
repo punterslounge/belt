@@ -3,7 +3,7 @@ defmodule Belt.Mixfile do
 
   def project do
     [app: :belt,
-     version: "0.4.2",
+     version: "0.5.0",
      elixir: "~> 1.4",
      elixirc_paths: elixirc_paths(Mix.env),
      build_embedded: Mix.env == :prod,
@@ -37,7 +37,7 @@ defmodule Belt.Mixfile do
   defp elixirc_paths(_), do: ["lib"]
 
   defp deps do
-    [{:gen_stage, "~> 0.12"},
+    [{:gen_stage, "~> 0.13"},
      {:ex_doc, "~> 0.19", only: :dev, runtime: false},
      {:coverex, "~> 1.4", only: :test},
      {:excoveralls, "~> 0.6", only: :test},

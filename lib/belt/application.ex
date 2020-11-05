@@ -14,7 +14,7 @@ defmodule Belt.Application do
       get_provider_supervisors()
     ]
 
-    Supervisor.start_link(children, strategy: :one_for_one, name: Belt.Supervisor)
+    Supervisor.start_link(children, strategy: :one_for_one)
   end
 
   defp get_provider_supervisors() do
