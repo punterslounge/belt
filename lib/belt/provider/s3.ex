@@ -288,7 +288,7 @@ if Code.ensure_loaded? ExAws.S3 do
     defp delete_files(config, aws_config, operation) do
       ExAws.stream!(operation, aws_config)
       |> Stream.map(&(&1[:key]))
-      |> Stream.chunk(1000, 1000, [])
+      |> Stream.chunk_every(1000, [])
       |> Enum.each(fn(files) ->
         ExAws.S3.delete_multiple_objects(config.bucket, files)
         |> ExAws.request!(aws_config)
